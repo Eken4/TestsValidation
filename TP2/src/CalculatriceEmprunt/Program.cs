@@ -10,6 +10,7 @@ class Program
             throw new ArgumentException("Usage : capital rate duration");
         }
 
+
         decimal.TryParse(args[0], out decimal capital);
         decimal.TryParse(args[1], out decimal rate);
         int.TryParse(args[2], out int duration);
@@ -18,6 +19,7 @@ class Program
         {
             throw new ArgumentException("Capital must be over 50000");
         }
+
 
         if (duration < 9 || duration > 25)
         {

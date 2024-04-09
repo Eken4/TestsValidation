@@ -1,11 +1,14 @@
 ﻿namespace CalculatriceEmprunt
 {
+
     public class CSVWriter : IWriter
+
     {
         private StreamWriter _writer;
 
         public CSVWriter(string filepath)
         {
+
             try
             {
                 _writer = new StreamWriter(filepath);
@@ -15,6 +18,7 @@
             {
                 throw new IOException("Chemin d'accès invalide", e);
             }
+
         }
 
         public void WriteToFormat(string[] data)
@@ -29,7 +33,9 @@
                     _writer.WriteLine(lineText);
                 }
             }
-            Console.WriteLine("Fichier CSV généré\n");
+
+            Console.WriteLine("Fichier CSV généré");
+
         }
     }
 }

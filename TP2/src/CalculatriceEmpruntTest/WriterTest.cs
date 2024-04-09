@@ -1,3 +1,4 @@
+
 ﻿using CalculatriceEmprunt;
 
 namespace CalculatriceEmpruntTest
@@ -5,6 +6,7 @@ namespace CalculatriceEmpruntTest
     public class WriterTest
     {
         public WriterTest() { }
+
 
         [Fact]
         public void CreateFileTest()
