@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+﻿using CalculatriceEmprunt;
 
 namespace CalculatriceEmpruntTest
 {
     public class WriterTest
     {
         public WriterTest() { }
+
+
+        [Fact]
+        public void CreateFileTest()
+        {
+            string path = "test.csv";
+            IWriter writer = new CSVWriter(path);
+            Assert.True(File.Exists(path));
+        }
     }
 }
