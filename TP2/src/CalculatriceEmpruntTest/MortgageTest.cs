@@ -9,31 +9,23 @@ namespace CalculatriceEmpruntTest
         [Theory]
         [InlineData(1.5, 0.00125)]
         [InlineData(3, 0.00250)]
-        public void MonthlyRateTest(double annualRate, double monthlyRate)
+        public void MonthlyRateTest(decimal annualRate, decimal expectedMonthlyRate)
         {
             Mortgage mortgage = new Mortgage(50000, 120, annualRate);
-            Assert.Equal(monthlyRate, mortgage.MonthlyRate);
+            Assert.Equal(expectedMonthlyRate, mortgage.MonthlyRate);
 
         }
 
         [Theory]
-        [InlineData(50000, 120, 1.5, 454.4907979)]
-        public void SinglePaymentTest(double capitalBorrowed, int duration, double rate, double expectedPayment)
+        [InlineData(50000, 10, 1.5, 448.96)]
+        [InlineData(100000, 12, 4, 875.53)]
+        [InlineData(75492, 9, 2.7, 788.15)]
+        [InlineData(150000, 25, 3, 711.32)]
+        public void SinglePaymentTest(decimal capitalBorrowed, int duration, decimal rate, decimal expectedPayment)
         {
             Mortgage mortgage = new Mortgage(capitalBorrowed, duration, rate);
             mortgage.Init();
             Assert.Equal(expectedPayment, mortgage.SinglePayment);
-
-        }
-
-        [Theory]
-        [InlineData(50000, 120, 1.5, 54538.89575)]
-        public void TotalAmountTest(double capitalBorrowed, int duration, double rate, double expectedAmount)
-        {
-            Mortgage mortgage = new Mortgage(capitalBorrowed, duration, rate);
-            mortgage.Init();
-            Assert.Equal(expectedAmount, mortgage.TotalAmount);
-
         }
     }
 }

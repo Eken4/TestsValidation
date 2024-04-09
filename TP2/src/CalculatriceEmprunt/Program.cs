@@ -9,8 +9,9 @@ class Program
         {
             throw new ArgumentException("Usage : capital rate duration");
         }
-        double.TryParse(args[0], out double capital);
-        double.TryParse(args[1], out double rate);
+
+        decimal.TryParse(args[0], out decimal capital);
+        decimal.TryParse(args[1], out decimal rate);
         int.TryParse(args[2], out int duration);
 
         if (capital < 50000)
@@ -18,14 +19,13 @@ class Program
             throw new ArgumentException("Capital must be over 50000");
         }
 
-        if (duration < 108 || duration > 300)
+        if (duration < 9 || duration > 25)
         {
-            throw new ArgumentException("Duration must be between 9 years (108 months) and 25 years (300 months)");
+            throw new ArgumentException("Duration must be between 9 years and 25 years");
         }
 
         Mortgage mortgage = new Mortgage(capital, duration, rate);
         mortgage.Init();
-        mortgage.SetPayments();
         string[] data = mortgage.GetOutput();
 
         IWriter writer = new CSVWriter("./mortgage.csv");

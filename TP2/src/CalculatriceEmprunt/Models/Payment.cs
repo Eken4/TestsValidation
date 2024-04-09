@@ -3,19 +3,23 @@
     public class Payment
     {
         public int Id { get; set; }
-        public double AmountLeft { get; set; }
-        public double AmountPaid { get; set; }
+        public decimal CapitalPaid { get; set; }
+        public decimal InterestPaid { get; set; }
+        public decimal CreditLeft { get; set; }
+        public decimal CreditPaid { get; set; }
 
-        public Payment(int id, double amountPaid, double amountLeft)
+        public Payment(int id, decimal capitalPaid, decimal interestPaid, decimal amountPaid, decimal amountLeft)
         {
             Id = id;
-            AmountPaid = amountPaid;
-            AmountLeft = amountLeft;
+            CapitalPaid = capitalPaid;
+            InterestPaid = interestPaid;
+            CreditPaid = amountPaid;
+            CreditLeft = amountLeft;
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            return string.Join(",", Id, AmountPaid, AmountLeft);
+            return string.Join(",", Id, CapitalPaid, InterestPaid, CreditPaid, CreditLeft);
         }
     }
 }
